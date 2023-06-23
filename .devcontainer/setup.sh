@@ -28,5 +28,3 @@ curl https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | apt-key add - \
     && echo "deb https://us-central1-apt.pkg.dev/projects/rp-byoc-tyler wasm-feature-branch-apt main" | tee -a /etc/apt/sources.list.d/artifact-registry.list \
     && apt update \
     && apt install redpanda
-
-systemctl start redpanda
