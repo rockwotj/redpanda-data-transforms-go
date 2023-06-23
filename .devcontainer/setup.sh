@@ -38,3 +38,9 @@ go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u -v github.com/zmb3/gogetdoc
 go get -u -v golang.org/x/lint/golint
 go get -u -v golang.org/x/tools/cmd/gorename
+
+# install custom redpanda
+RUN curl https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | apt-key add - \
+    && echo "deb https://us-central1-apt.pkg.dev/projects/rp-byoc-tyler wasm-feature-branch-apt main" | tee -a /etc/apt/sources.list.d/artifact-registry.list \
+    && apt update \
+    && apt install redpanda
