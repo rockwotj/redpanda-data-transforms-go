@@ -1,9 +1,9 @@
 # install curl, git, ...
 apt-get update
-apt-get install -y curl git jq gnupg
+apt-get install -y curl git jq gnupg sudo
 
-useradd -m user
-su user
+# useradd -m user
+# su user
 
 # install go
 VERSION='1.20'
