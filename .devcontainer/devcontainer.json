@@ -11,14 +11,14 @@
                 "vscode-icons-team.vscode-icons",
                 "visualstudioexptteam.vscodeintellicode",
                 "ms-vscode.go"
-            ]
+            ],
+            "settings": {
+                "files.exclude": {
+                    "**/CODE_OF_CONDUCT.md": true,
+                    "**/LICENSE": true
+                }
+            }
         }
     },
-    "dockerFile": "Dockerfile",
-    "settings": {
-        "files.exclude": {
-            "**/CODE_OF_CONDUCT.md": true,
-            "**/LICENSE": true
-        }
-    }
+    "dockerFile": "Dockerfile"
 }
