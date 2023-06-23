@@ -1,6 +1,6 @@
 # install curl, git, ...
 apt-get update
-apt-get install -y curl git jq
+apt-get install -y curl git jq gnupg
 
 useradd -m user
 su user
@@ -19,28 +19,12 @@ echo "Go version ${INSTALLED_GO_VERSION} is installed"
 
 # install gopls, dlv, hey
 echo "Getting development tools"
-go get -u golang.org/x/tools/gopls
-go get -u github.com/go-delve/delve/cmd/dlv
-go get -u github.com/rakyll/hey
-
-# vscode-go dependencies 
-echo "Getting dependencies for the vscode-go plugin "
-# via: https://github.com/microsoft/vscode-go/blob/master/.travis.yml
-go get -u -v github.com/acroca/go-symbols
-go get -u -v github.com/cweill/gotests/...
-go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-go get -u -v github.com/haya14busa/goplay/cmd/goplay
-go get -u -v github.com/mdempsky/gocode
-go get -u -v github.com/ramya-rao-a/go-outline
-go get -u -v github.com/rogpeppe/godef
-go get -u -v github.com/sqs/goreturns
-go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
-go get -u -v github.com/zmb3/gogetdoc
-go get -u -v golang.org/x/lint/golint
-go get -u -v golang.org/x/tools/cmd/gorename
+go install golang.org/x/tools/gopls@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
+go install github.com/rakyll/hey@latest
 
 # install custom redpanda
-RUN curl https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | apt-key add - \
+curl https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | apt-key add - \
     && echo "deb https://us-central1-apt.pkg.dev/projects/rp-byoc-tyler wasm-feature-branch-apt main" | tee -a /etc/apt/sources.list.d/artifact-registry.list \
     && apt update \
     && apt install redpanda
